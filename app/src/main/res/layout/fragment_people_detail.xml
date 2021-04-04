@@ -16,16 +16,15 @@
         android:background="@color/black_900">
 
         <ImageView
-            android:id="@+id/profile_pic"
-            android:layout_width="240dp"
-            android:layout_height="240dp"
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toTopOf="@+id/guideline_middle"
-            app:srcUrl="@{people.thumbnail}"
-            app:circleCrop="@{true}"/>
+            app:srcUrl="@{people.thumbnail}"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_middle"
@@ -36,6 +35,7 @@
 
 
         <include
+            android:id="@+id/card_people"
             layout="@layout/card_people_info"
             android:layout_width="0dp"
             android:layout_height="0dp"

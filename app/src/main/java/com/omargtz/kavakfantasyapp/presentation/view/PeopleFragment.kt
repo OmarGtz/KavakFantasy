@@ -19,7 +19,6 @@ import com.omargtz.kavakfantasyapp.presentation.view.adapter.PeopleAdapter
 import com.omargtz.kavakfantasyapp.presentation.viewmodel.PeopleViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class PeopleFragment : Fragment() {
 
@@ -34,6 +33,13 @@ class PeopleFragment : Fragment() {
         binding = FragmentPeopleBinding.inflate(inflater, container, false)
         with(binding) {
             peopleOfBrastlewark.adapter = adapter
+            peopleOfBrastlewark.apply {
+                postponeEnterTransition()
+                viewTreeObserver.addOnPreDrawListener {
+                    startPostponedEnterTransition()
+                    true
+                }
+            }
         }
         return binding.root
     }

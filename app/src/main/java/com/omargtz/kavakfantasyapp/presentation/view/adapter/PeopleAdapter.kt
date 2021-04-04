@@ -2,15 +2,15 @@ package com.omargtz.kavakfantasyapp.presentation.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
+import androidx.core.view.ViewCompat
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.omargtz.kavakfantasyapp.R
 import com.omargtz.kavakfantasyapp.data.model.PeopleDto
 import com.omargtz.kavakfantasyapp.databinding.ItemPeopleBinding
-import com.omargtz.kavakfantasyapp.presentation.view.ARG_PEOPLE_DETAIL
+import com.omargtz.kavakfantasyapp.presentation.view.PeopleFragmentDirections
 import com.omargtz.kavakfantasyapp.utils.toJson
 
 class PeopleAdapter: ListAdapter< PeopleDto,PeopleAdapter.PeopleViewHolder>(PeopleDiffCallback) {
@@ -20,14 +20,27 @@ class PeopleAdapter: ListAdapter< PeopleDto,PeopleAdapter.PeopleViewHolder>(Peop
 
         fun bind(item: PeopleDto) {
             binding.people = item
+            ViewCompat.setTransitionName(binding.image, "image_${item.name}")
+            ViewCompat.setTransitionName(binding.name, "name_${item.name}")
+            ViewCompat.setTransitionName(binding.age, "age_${item.name}")
+            ViewCompat.setTransitionName(binding.hairColor, "hairColor_${item.name}")
             binding.root.setOnClickListener {
-                val bundle = bundleOf(ARG_PEOPLE_DETAIL to item.toJson())
-                binding.root.findNavController().navigate(
-                    R.id.action_peopleScreen_to_detailScreen,
-                    bundle
-                )
+                onItemClicked(item, binding)
             }
             binding.executePendingBindings()
+        }
+
+        fun onItemClicked(item: PeopleDto, binding: ItemPeopleBinding) {
+            val directions = PeopleFragmentDirections.actionPeopleScreenToDetailScreen(item.toJson())
+            val extras = FragmentNavigatorExtras(
+                binding.image to "image_${item.name}",
+                binding.name to "name_${item.name}",
+                binding.age to "age_${item.name}",
+                binding.hairColor to "hairColor_${item.name}")
+            binding.root.findNavController().navigate(
+                directions,
+                extras
+            )
         }
 
         companion object {

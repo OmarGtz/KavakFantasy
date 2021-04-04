@@ -4,7 +4,7 @@
     <color name="black_900">#22262a</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="white_overlay">#FBFBFB</color>
+    <color name="white_overlay">#F5F5F5F5</color>
     <color name="immersive_sys_ui">#00000000</color>
     <color name="nav_bar">@color/immersive_sys_ui</color>
 

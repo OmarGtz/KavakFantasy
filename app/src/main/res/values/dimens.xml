@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="image_people_height">100dp</dimen>
+    <dimen name="image_people_height">120dp</dimen>
+    <dimen name="image_people_width">100dp</dimen>
 
     <dimen name="grid_2">16dp</dimen>
     <dimen name="grid_2_5">20dp</dimen>

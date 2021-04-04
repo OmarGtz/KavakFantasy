@@ -44,7 +44,7 @@
   <style name="TextAppearance.kavak.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
     <item name="fontFamily">@font/noto_sans_bold</item>
     <item name="android:textColor">@color/black</item>
-    <item name="lineHeight">13sp</item>
+    <item name="lineHeight">18sp</item>
   </style>
 
   <style name="TextAppearance.kavak.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">

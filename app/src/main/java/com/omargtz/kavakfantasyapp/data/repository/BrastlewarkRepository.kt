@@ -5,5 +5,5 @@ import com.omargtz.kavakfantasyapp.data.model.PeopleDto
 import kotlinx.coroutines.flow.Flow
 
 interface BrastlewarkRepository {
-    suspend fun getPeople(): Flow<KavakResult<List<PeopleDto>>>
+    fun getPeople(): Flow<KavakResult<List<PeopleDto>>>
 }

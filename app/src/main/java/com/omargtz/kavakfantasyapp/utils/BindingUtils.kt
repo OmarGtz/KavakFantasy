@@ -54,8 +54,5 @@ fun ImageView.setImageUrl(imageUrl: String) {
     )
     val request = Glide.with(this).load(url).diskCacheStrategy(
         DiskCacheStrategy.NONE)
-
     request.into(this)
 }
-
-

@@ -4,21 +4,21 @@ import com.google.gson.annotations.SerializedName
 
 data class PeopleDto(
     @SerializedName("id")
-    val id: Int,
+    val id: Int = 0,
     @SerializedName("name")
-    val name: String,
+    val name: String = "",
     @SerializedName("thumbnail")
-    val thumbnail: String,
+    val thumbnail: String = "",
     @SerializedName("age")
     val age: Int,
     @SerializedName("weight")
-    val weight: Double,
+    val weight: Double = 0.0,
     @SerializedName("height")
-    val height: Double,
+    val height: Double = 0.0,
     @SerializedName("hair_color")
-    val hair_color: String,
+    val hair_color: String = "",
     @SerializedName("professions")
-    val professions: List<String>,
+    val professions: List<String> = listOf(),
     @SerializedName("friends")
-    val friends: List<String>
+    val friends: List<String> = listOf()
 )

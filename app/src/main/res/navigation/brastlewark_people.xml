@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/brastlewark_people"
+    app:startDestination="@id/peopleFragment">
+
+    <fragment
+        android:id="@+id/peopleFragment"
+        android:name="com.omargtz.kavakfantasyapp.presentation.view.PeopleFragment"
+        android:label="PeopleFragment"
+        tools:layout="@layout/fragment_people">
+        <action
+            android:id="@+id/action_peopleScreen_to_detailScreen"
+            app:destination="@id/peopleDetailFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/peopleDetailFragment"
+        android:name="com.omargtz.kavakfantasyapp.presentation.view.PeopleDetailFragment"
+        android:label="PeopleFragment"
+        tools:layout="@layout/fragment_people_detail">
+        <argument
+            android:name="detail"
+            app:argType="string"/>
+    </fragment>
+</navigation>

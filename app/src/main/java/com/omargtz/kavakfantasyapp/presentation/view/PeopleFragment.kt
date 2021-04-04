@@ -44,7 +44,6 @@ class PeopleFragment : Fragment() {
         with(binding) {
             val adapter = PeopleAdapter()
             adapter.brastlewark = people
-
             peopleOfBrastlewark.layoutManager = LinearLayoutManager(requireContext())
             peopleOfBrastlewark.adapter = adapter
         }

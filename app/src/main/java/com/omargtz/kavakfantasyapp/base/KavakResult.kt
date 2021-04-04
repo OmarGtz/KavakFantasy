@@ -1,12 +1,12 @@
-package com.omargtz.logintestexample.base
+package com.omargtz.kavakfantasyapp.base
 
 import androidx.lifecycle.MutableLiveData
 
-sealed class LoginResult<out R> {
+sealed class KavakResult<out R> {
 
-    data class Success<out T>(val data: T) : LoginResult<T>()
-    data class Error(val exception: Throwable) : LoginResult<Nothing>()
-    object Loading : LoginResult<Nothing>()
+    data class Success<out T>(val data: T) : KavakResult<T>()
+    data class Error(val exception: Throwable) : KavakResult<Nothing>()
+    object Loading : KavakResult<Nothing>()
 
     override fun toString(): String {
         return when (this) {
@@ -18,20 +18,20 @@ sealed class LoginResult<out R> {
 }
 
 /**
- * [Success.data] if [LoginResult] is of type [Success]
+ * [Success.data] if [KavakResult] is of type [Success]
  */
-fun <T> LoginResult<T>.successOr(fallback: T): T {
-    return (this as? LoginResult.Success<T>)?.data ?: fallback
+fun <T> KavakResult<T>.successOr(fallback: T): T {
+    return (this as? KavakResult.Success<T>)?.data ?: fallback
 }
 
-val <T> LoginResult<T>.data: T?
-    get() = (this as? LoginResult.Success)?.data
+val <T> KavakResult<T>.data: T?
+    get() = (this as? KavakResult.Success)?.data
 
 /**
- * Updates value of [liveData] if [LoginResult] is of type [Success]
+ * Updates value of [liveData] if [KavakResult] is of type [Success]
  */
-inline fun <reified T> LoginResult<T>.updateOnSuccess(liveData: MutableLiveData<T>) {
-    if (this is LoginResult.Success) {
+inline fun <reified T> KavakResult<T>.updateOnSuccess(liveData: MutableLiveData<T>) {
+    if (this is KavakResult.Success) {
         liveData.value = data
     }
 }

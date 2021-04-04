@@ -1,5 +1,6 @@
 package com.omargtz.kavakfantasyapp.presentation.viewmodel
 
+import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -19,6 +20,7 @@ class PeopleViewModel @ViewModelInject constructor(private val loadPeopleUseCase
     fun loadPeople() {
         viewModelScope.launch {
             loadPeopleUseCase.invoke(Unit).collect {
+                Log.i("Result", it.toString())
                 _peopleResult.value = it
             }
         }

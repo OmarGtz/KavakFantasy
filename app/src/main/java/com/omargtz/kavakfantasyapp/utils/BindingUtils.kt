@@ -1,10 +1,14 @@
 package com.omargtz.kavakfantasyapp.utils
 
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.facebook.drawee.view.SimpleDraweeView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.model.LazyHeaders
+import com.bumptech.glide.request.RequestOptions
 import com.omargtz.kavakfantasyapp.R
-import com.omargtz.kavakfantasyapp.data.model.PeopleDto
 
 @BindingAdapter("age")
 fun TextView.setAge(age: Int) {
@@ -18,31 +22,40 @@ fun TextView.setHairColor(color: String) {
 
 @BindingAdapter("name")
 fun TextView.setName(name: String) {
-    text = resources.getString(R.string.name, name)
+    text = name
 }
 
 @BindingAdapter("weight")
 fun TextView.setWeight(weight: String) {
-    text = resources.getString(R.string.name, weight)
+    text = resources.getString(R.string.weight, weight)
 }
 
 @BindingAdapter("height")
 fun TextView.setHeight(weight: String) {
-    text = resources.getString(R.string.name, weight)
+    text = resources.getString(R.string.height, weight)
 }
 
 @BindingAdapter("friends")
-fun TextView.setFriends(weight: String) {
-    text = resources.getString(R.string.name, weight)
+fun TextView.setFriends(friends: List<String>) {
+    text = resources.getString(R.string.friends, friends.joinToString { "" })
 }
 
 @BindingAdapter("professions")
-fun TextView.setProfessions(weight: String) {
-    text = resources.getString(R.string.name, weight)
+fun TextView.setProfessions(professions: List<String>) {
+    text = resources.getString(R.string.professions, professions.joinToString { " " })
 }
 
 @BindingAdapter("image")
-fun SimpleDraweeView.setImageUrl(imageUrl: String) {
-    setImageURI(imageUrl)
+fun ImageView.setImageUrl(imageUrl: String) {
+    val url = GlideUrl(
+        imageUrl, LazyHeaders.Builder()
+            .addHeader("User-Agent", "Kavak-Agent")
+            .build()
+    )
+    val request = Glide.with(this).load(url).diskCacheStrategy(
+        DiskCacheStrategy.NONE)
+
+    request.into(this)
 }
+
 

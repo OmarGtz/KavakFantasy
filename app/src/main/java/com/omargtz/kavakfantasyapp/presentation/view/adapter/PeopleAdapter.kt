@@ -1,14 +1,12 @@
 package com.omargtz.kavakfantasyapp.presentation.view.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.omargtz.kavakfantasyapp.data.model.Brastlewark
 import com.omargtz.kavakfantasyapp.data.model.PeopleDto
 import com.omargtz.kavakfantasyapp.databinding.ItemPeopleBinding
 
-class PeopleAdapter: RecyclerView.Adapter<PeopleAdapter.PeopleViewHolder>() {
+class PeopleAdapter(): RecyclerView.Adapter<PeopleAdapter.PeopleViewHolder>() {
 
     var brastlewark = listOf<PeopleDto>()
     set(value) {
@@ -16,7 +14,7 @@ class PeopleAdapter: RecyclerView.Adapter<PeopleAdapter.PeopleViewHolder>() {
         notifyDataSetChanged()
     }
 
-    class PeopleViewHolder private constructor(val binding: ItemPeopleBinding) :
+    class PeopleViewHolder (val binding: ItemPeopleBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: PeopleDto) {
             binding.people = item

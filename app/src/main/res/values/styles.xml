@@ -13,9 +13,10 @@
     </style>
 
     <style name="ThemeOverlay.App.Card" parent="">
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorSurface">@color/white</item>
-        <item name="colorOnSurface">@color/white_overlay</item>
-    </style>
+        <item name="colorPrimary">@color/black_800</item>
+        <item name="colorSurface">@color/white_overlay</item>
+        <item name="colorOnSurface">@color/black_900</item>
+        <item name="colorSecondary">@color/black_800</item>
 
+    </style>
 </resources>

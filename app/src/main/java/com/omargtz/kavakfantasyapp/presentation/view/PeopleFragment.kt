@@ -25,12 +25,16 @@ class PeopleFragment : Fragment() {
 
     lateinit var binding: FragmentPeopleBinding
     private val viewModel by viewModels<PeopleViewModel>()
+    val adapter: PeopleAdapter = PeopleAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPeopleBinding.inflate(inflater, container, false)
+        with(binding) {
+            peopleOfBrastlewark.adapter = adapter
+        }
         return binding.root
     }
 
@@ -41,12 +45,7 @@ class PeopleFragment : Fragment() {
     }
 
     private fun setupPeopleOfBrastlewark(people: List<PeopleDto>) {
-        with(binding) {
-            val adapter = PeopleAdapter()
-            adapter.brastlewark = people
-            peopleOfBrastlewark.layoutManager = LinearLayoutManager(requireContext())
-            peopleOfBrastlewark.adapter = adapter
-        }
+        adapter.submitList(people)
     }
 
     private fun subscribeLoadPeopleUseCase() {

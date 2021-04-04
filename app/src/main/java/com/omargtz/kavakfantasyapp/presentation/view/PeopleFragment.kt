@@ -9,12 +9,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.omargtz.kavakfantasyapp.R
+import com.omargtz.kavakfantasyapp.databinding.FragmentPeopleBinding
+import com.omargtz.kavakfantasyapp.databinding.ItemPeopleBinding
+import com.omargtz.kavakfantasyapp.presentation.view.adapter.PeopleAdapter
 import com.omargtz.kavakfantasyapp.presentation.viewmodel.PeopleViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class PeopleFragment : Fragment() {
 
+    lateinit var binding: FragmentPeopleBinding
     private val viewModel by viewModels<PeopleViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +29,8 @@ class PeopleFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_people, container, false)
+        binding = FragmentPeopleBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

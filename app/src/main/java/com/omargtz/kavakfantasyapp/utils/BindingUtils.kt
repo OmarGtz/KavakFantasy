@@ -4,6 +4,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.facebook.drawee.view.SimpleDraweeView
 import com.omargtz.kavakfantasyapp.R
+import com.omargtz.kavakfantasyapp.data.model.PeopleDto
 
 @BindingAdapter("age")
 fun TextView.setAge(age: Int) {
@@ -42,6 +43,6 @@ fun TextView.setProfessions(weight: String) {
 
 @BindingAdapter("image")
 fun SimpleDraweeView.setImageUrl(imageUrl: String) {
-    setImageUrl(imageUrl)
+    setImageURI(imageUrl)
 }
 

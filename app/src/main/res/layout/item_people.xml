@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="people_item"
+            name="people"
             type="com.omargtz.kavakfantasyapp.data.model.PeopleDto" />
     </data>
 
@@ -45,6 +45,7 @@
                 android:layout_marginVertical="@dimen/grid_1"
                 app:backgroundImage="@color/black_800"
                 app:roundingBorderWidth="14dp"
+                app:image="@{people.thumbnail}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="@id/guideline_begin"
                 app:layout_constraintBottom_toBottomOf="parent" />
@@ -56,6 +57,7 @@
                 android:layout_marginStart="@dimen/grid_1"
                 android:fontFamily="sans-serif-light"
                 android:textAppearance="?attr/textAppearanceHeadline6"
+                app:name="@{people.name}"
                 app:layout_constraintBottom_toTopOf="@+id/hairColor"
                 app:layout_constraintEnd_toEndOf="@id/guideline_end"
                 app:layout_constraintStart_toEndOf="@id/image"
@@ -68,6 +70,7 @@
                 android:layout_height="wrap_content"
                 tools:text="Color de pelo: Rojo"
                 android:textAppearance="?attr/textAppearanceBody1"
+                app:hairColor="@{people.hair_color}"
                 app:layout_constraintStart_toStartOf="@id/name"
                 app:layout_constraintTop_toBottomOf="@+id/name"
                 app:layout_constraintEnd_toEndOf="@id/guideline_end"
@@ -79,6 +82,7 @@
                 android:layout_height="wrap_content"
                 tools:text="Edad: 15 años"
                 android:textAppearance="?attr/textAppearanceBody1"
+                app:hairColor="@{people.hair_color}"
                 app:layout_constraintEnd_toEndOf="@id/guideline_end"
                 app:layout_constraintTop_toBottomOf="@+id/hairColor"
                 app:layout_constraintStart_toStartOf="@+id/name"

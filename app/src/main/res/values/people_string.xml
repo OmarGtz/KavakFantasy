@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="name">Nombre</string>
-    <string name="age">Edad</string>
-    <string name="weight">Peso</string>
-    <string name="height">Altura</string>
-    <string name="friends">Amigos</string>
-    <string name="hair_color">color de pelo</string>
-    <string name="Professions">profesiones</string>
+    <string name="name">Nombre: %s</string>
+    <string name="age">Edad: %d años</string>
+    <string name="weight">Peso: %s kgs</string>
+    <string name="height">Altura: %s mtrs</string>
+    <string name="friends">Amigos: </string>
+    <string name="hair_color">Color de pelo:%s</string>
+    <string name="Professions">Profesiones: </string>
 </resources>

@@ -12,7 +12,7 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Widget.App.CardView"
+        style="@style/Widget.App.CardView.Item"
         android:layout_marginHorizontal="@dimen/grid_0_5"
         android:layout_marginVertical="@dimen/grid_0_5">
 

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="people"
+            type="com.omargtz.kavakfantasyapp.data.model.PeopleDto" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.App.CardView.Detail"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/grid_2" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_begin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/grid_2" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceHeadline5"
+                android:layout_marginTop="@dimen/grid_1"
+                android:layout_marginBottom="@dimen/grid_1"
+                app:layout_constraintStart_toStartOf="@id/guideline_begin"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/hairColor"
+                app:name="@{people.name}"
+                tools:text="Omar Gutierrez Santiago" />
+
+            <TextView
+                android:id="@+id/hairColor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintStart_toStartOf="@id/guideline_begin"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintTop_toBottomOf="@+id/name"
+                app:layout_constraintBottom_toTopOf="@+id/age"
+                app:hairColor="@{people.hair_color}"
+                tools:text="Color de pelo rojo" />
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintStart_toStartOf="@id/guideline_begin"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintTop_toBottomOf="@+id/hairColor"
+                app:layout_constraintBottom_toTopOf="@+id/weight"
+                app:age="@{people.age}"
+                tools:text="Edad: 106 años" />
+
+            <TextView
+                android:id="@+id/weight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintStart_toStartOf="@id/guideline_begin"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintTop_toBottomOf="@+id/age"
+                app:layout_constraintBottom_toTopOf="@id/height"
+                app:weight="@{people.weight}"
+                tools:text="Peso: 100 k" />
+
+            <TextView
+                android:id="@+id/height"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintStart_toStartOf="@id/guideline_begin"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintTop_toBottomOf="@+id/weight"
+                app:layout_constraintBottom_toTopOf="@+id/professions"
+                app:height="@{people.height}"
+                tools:text="Altura: 100 mtrs" />
+            <TextView
+                android:id="@+id/professions"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintStart_toStartOf="@id/guideline_begin"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintTop_toBottomOf="@+id/height"
+                app:layout_constraintBottom_toTopOf="@+id/friends"
+                app:professions="@{people.professions}"
+                tools:text="Profesiones Pintor, cazador, Programador, playboy, millonario, filantropo " />
+
+            <TextView
+                android:id="@+id/friends"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:layout_marginBottom="@dimen/grid_2"
+                app:layout_constraintStart_toStartOf="@id/guideline_begin"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintTop_toBottomOf="@+id/professions"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:friends="@{people.friends}"
+                tools:text="Amigos: Capitan america, Hulk, Thor" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

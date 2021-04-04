@@ -6,4 +6,6 @@
     <string name="friends">Amigos: %s</string>
     <string name="hair_color">Color de pelo: %s</string>
     <string name="professions">Profesiones: %s</string>
+    <string name="professions_empty_text">No tiene profesiones.</string>
+    <string name="friends_empty">No tiene amigos. Hazte su amigo!</string>
 </resources>

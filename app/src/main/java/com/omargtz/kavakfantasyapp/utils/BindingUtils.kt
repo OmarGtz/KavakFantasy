@@ -1,5 +1,6 @@
 package com.omargtz.kavakfantasyapp.utils
 
+import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -26,23 +27,34 @@ fun TextView.setName(name: String) {
 }
 
 @BindingAdapter("weight")
-fun TextView.setWeight(weight: String) {
-    text = resources.getString(R.string.weight, weight)
+fun TextView.setWeight(weight: Double) {
+    text = resources.getString(R.string.weight, weight.toString())
 }
 
 @BindingAdapter("height")
-fun TextView.setHeight(weight: String) {
-    text = resources.getString(R.string.height, weight)
+fun TextView.setHeight(weight: Double) {
+    text = resources.getString(R.string.height, weight.toString())
 }
 
 @BindingAdapter("friends")
 fun TextView.setFriends(friends: List<String>) {
-    text = resources.getString(R.string.friends, friends.joinToString { "" })
+   val description = if (friends.isNotEmpty()) {
+       friends.joinToString(", ")
+   } else {
+       resources.getString(R.string.friends_empty)
+   }
+
+    text = resources.getString(R.string.friends, description)
 }
 
 @BindingAdapter("professions")
 fun TextView.setProfessions(professions: List<String>) {
-    text = resources.getString(R.string.professions, professions.joinToString { " " })
+    val description = if (professions.isNotEmpty()) {
+        professions.joinToString(", ")
+    } else {
+        resources.getString(R.string.professions_empty_text)
+    }
+    text = resources.getString(R.string.professions, description)
 }
 
 @BindingAdapter("image")
@@ -54,5 +66,22 @@ fun ImageView.setImageUrl(imageUrl: String) {
     )
     val request = Glide.with(this).load(url).diskCacheStrategy(
         DiskCacheStrategy.NONE)
+    request.into(this)
+}
+
+@BindingAdapter("srcUrl", "circleCrop", "placeholder", requireAll = false)
+fun ImageView.bindSrcUrl(
+    url: String,
+    circleCrop: Boolean,
+    placeholder: Drawable?
+) {
+    val imageUrl = GlideUrl(
+        url, LazyHeaders.Builder()
+            .addHeader("User-Agent", "Kavak-Agent")
+            .build()
+    )
+    val request = Glide.with(this).load(imageUrl)
+    if (circleCrop) request.circleCrop()
+    if (placeholder != null) request.placeholder(placeholder)
     request.into(this)
 }

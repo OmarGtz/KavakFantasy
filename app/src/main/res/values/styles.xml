@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Widget.App.CardView" parent="Widget.MaterialComponents.CardView">
+    <style name="Widget.App.CardView.Item" parent="Widget.MaterialComponents.CardView">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.Card</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.Card</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Card.Small</item>
+        <item name="android:elevation">5dp</item>
+    </style>
+
+    <style name="Widget.App.CardView.Detail" parent="Widget.MaterialComponents.CardView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Card</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Card.Medium</item>
         <item name="android:elevation">5dp</item>
     </style>
 

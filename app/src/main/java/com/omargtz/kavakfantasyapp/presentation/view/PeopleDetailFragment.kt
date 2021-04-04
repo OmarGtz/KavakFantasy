@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.omargtz.kavakfantasyapp.R
 import com.omargtz.kavakfantasyapp.data.model.PeopleDto
+import com.omargtz.kavakfantasyapp.databinding.FragmentPeopleDetailBinding
 import com.omargtz.kavakfantasyapp.utils.fromJson
 
 const val ARG_PEOPLE_DETAIL = "detail"
@@ -14,6 +15,7 @@ const val ARG_PEOPLE_DETAIL = "detail"
 class PeopleDetailFragment : Fragment() {
 
     private var peopleDetail: PeopleDto? = null
+    private lateinit var binding: FragmentPeopleDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +30,15 @@ class PeopleDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_people_detail, container, false)
+        binding = FragmentPeopleDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(binding) {
+            people = peopleDetail
+        }
     }
 
     companion object {

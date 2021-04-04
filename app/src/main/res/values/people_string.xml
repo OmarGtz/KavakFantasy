@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name">Nombre</string>
+    <string name="age">Edad</string>
+    <string name="weight">Peso</string>
+    <string name="height">Altura</string>
+    <string name="friends">Amigos</string>
+    <string name="hair_color">color de pelo</string>
+    <string name="Professions">profesiones</string>
+</resources>

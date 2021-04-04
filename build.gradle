@@ -8,10 +8,37 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.28-alpha'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
+}
+
+ext {
+    //arch
+    archLifecycleVersion = '2.2.0'
+
+    kotlin_coroutines_version = '1.3.8'
+    hilt_version = '2.28-alpha'
+
+    //appcompact
+    appCompact='1.0.2'
+
+    //recyclerview
+    recyclerView='1.0.0'
+
+    //gson
+    gson ='2.8.6'
+
+    //retrofit
+    converterGson='2.3.0'
+    adapterRxjava2='2.3.0'
+    retrofit='2.6.0'
+    converterScalars='2.3.0'
+    okhttp='3.10.0'
+    loggingInterceptor='3.8.0'
+    nav_version = '2.3.0'
 }
 
 allprojects {

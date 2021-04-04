@@ -10,11 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.omargtz.kavakfantasyapp.R
 import com.omargtz.kavakfantasyapp.presentation.viewmodel.PeopleViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class PeopleFragment : Fragment() {
 
-    val viewModel by viewModels<PeopleViewModel>()
+    private val viewModel by viewModels<PeopleViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,9 +34,9 @@ class PeopleFragment : Fragment() {
         viewModel.loadPeople()
     }
 
-    fun subscribeLoadPeopleUseCase() {
+    private fun subscribeLoadPeopleUseCase() {
          viewModel.peopleResult.observe(viewLifecycleOwner, Observer {
-             Log.i("Resul", it.toString())
+             Log.i("Result", it.toString())
          })
     }
 

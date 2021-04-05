@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import com.omargtz.kavakfantasyapp.R
@@ -42,6 +43,9 @@ class PeopleDetailFragment : Fragment() {
         ViewCompat.setTransitionName(binding.cardPeople.hairColor, "hairColor_${peopleDetail?.name}")
         with(binding) {
             people = peopleDetail
+            toolbar.setNavigationOnClickListener {
+                findNavController().navigateUp()
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.omargtz.kavakfantasyapp.R
 import com.omargtz.kavakfantasyapp.base.KavakResult
 import com.omargtz.kavakfantasyapp.data.model.PeopleDto
 import com.omargtz.kavakfantasyapp.databinding.FragmentPeopleBinding
@@ -60,19 +61,24 @@ class PeopleFragment : Fragment() {
                  is KavakResult.Loading -> Log.i("Loading", "Loading")
                  is KavakResult.Success -> setupPeopleOfBrastlewark(it.data.Brastlewark)
                  is KavakResult.Error -> {
-                     LoadBrastlewarkPeopleErrorFragment().show(childFragmentManager, "error")
+                     LoadBrastlewarkPeopleErrorFragment{
+                         viewModel.loadPeople()
+                     }.show(childFragmentManager, "error")
                  }
              }
          })
     }
 
-    class LoadBrastlewarkPeopleErrorFragment : DialogFragment() {
+    class LoadBrastlewarkPeopleErrorFragment(val retry:() -> Unit) : DialogFragment() {
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
             return MaterialAlertDialogBuilder(requireContext())
-                .setMessage("Lo sentimos Ocurrio un error inesperado. Reintenta de nuevo porfavor")
-                .setPositiveButton("Reintentar") { _, _ ->
+                .setMessage(getString(R.string.load_people_error))
+                .setPositiveButton(getString(R.string.button_retry)) { _, _ ->
                     dismiss()
+                    retry()
                 }
+                .setCancelable(false)
                 .create()
         }
     }

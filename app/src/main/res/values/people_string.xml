@@ -9,4 +9,6 @@
     <string name="professions_empty_text">No tiene profesiones.</string>
     <string name="friends_empty">No tiene amigos. Hazte su amigo!</string>
     <string name="load_people_error">Lo sentimos ocurrio un error inesperado. Reintenta de nuevo porfavor para cargar lo información de los habitantes de Bratlewark</string>
+    <string name="header_title">Bienvenido a Brastlewark</string>
+    <string name="header_description">%d habitantes por conocer</string>
 </resources>

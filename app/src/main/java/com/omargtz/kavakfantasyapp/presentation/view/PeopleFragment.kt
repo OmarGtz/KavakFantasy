@@ -2,7 +2,6 @@ package com.omargtz.kavakfantasyapp.presentation.view
 
 import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.omargtz.kavakfantasyapp.R
 import com.omargtz.kavakfantasyapp.base.KavakResult
@@ -25,7 +23,7 @@ class PeopleFragment : Fragment() {
 
     lateinit var binding: FragmentPeopleBinding
     private val viewModel by viewModels<PeopleViewModel>()
-    val adapter: PeopleAdapter = PeopleAdapter()
+    private val peopleAdapter: PeopleAdapter = PeopleAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +31,7 @@ class PeopleFragment : Fragment() {
     ): View? {
         binding = FragmentPeopleBinding.inflate(inflater, container, false)
         with(binding) {
-            peopleOfBrastlewark.adapter = adapter
+            peopleOfBrastlewark.adapter = peopleAdapter
             peopleOfBrastlewark.apply {
                 postponeEnterTransition()
                 viewTreeObserver.addOnPreDrawListener {
@@ -52,15 +50,31 @@ class PeopleFragment : Fragment() {
     }
 
     private fun setupPeopleOfBrastlewark(people: List<PeopleDto>) {
-        adapter.submitList(people)
+        peopleAdapter.submitList(people)
+    }
+
+    private fun showLoading(show: Boolean) {
+        with(binding.loading) {
+            if (show) {
+                playAnimation()
+                visibility = View.VISIBLE
+            } else {
+                visibility = View.GONE
+                pauseAnimation()
+            }
+        }
     }
 
     private fun subscribeLoadPeopleUseCase() {
          viewModel.peopleResult.observe(viewLifecycleOwner, Observer {
              when (it) {
-                 is KavakResult.Loading -> Log.i("Loading", "Loading")
-                 is KavakResult.Success -> setupPeopleOfBrastlewark(it.data.Brastlewark)
+                 is KavakResult.Loading -> showLoading(true)
+                 is KavakResult.Success -> {
+                     showLoading(false)
+                     setupPeopleOfBrastlewark(it.data.Brastlewark)
+                 }
                  is KavakResult.Error -> {
+                     showLoading(false)
                      LoadBrastlewarkPeopleErrorFragment{
                          viewModel.loadPeople()
                      }.show(childFragmentManager, "error")
@@ -71,7 +85,6 @@ class PeopleFragment : Fragment() {
 
     class LoadBrastlewarkPeopleErrorFragment(val retry:() -> Unit) : DialogFragment() {
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-
             return MaterialAlertDialogBuilder(requireContext())
                 .setMessage(getString(R.string.load_people_error))
                 .setPositiveButton(getString(R.string.button_retry)) { _, _ ->
@@ -82,6 +95,4 @@ class PeopleFragment : Fragment() {
                 .create()
         }
     }
-
-
 }
